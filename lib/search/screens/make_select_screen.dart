@@ -1,0 +1,166 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sayarti/home/widgets/skeleton_box.dart';
+import 'package:sayarti/l10n/app_localizations.dart';
+import 'package:sayarti/search/providers/search_provider.dart';
+
+class MakeScreen extends StatefulWidget {
+  const MakeScreen({super.key});
+
+  @override
+  State<MakeScreen> createState() => _MakeScreenState();
+}
+
+class _MakeScreenState extends State<MakeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<SearchProvider>().loadBrands();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final search = context.watch<SearchProvider>();
+
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+
+      appBar: AppBar(
+        leading: const BackButton(color: Colors.black),
+        scrolledUnderElevation: 0,
+        centerTitle: false,
+        title: Text(
+          AppLocalizations.of(context)!.makeFilter,
+          style: const TextStyle(
+            fontSize: 18.43,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF131313),
+            height: 1.0,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
+
+      body: _buildBody(search),
+
+      bottomNavigationBar: _bottomBar(search),
+    );
+  }
+
+  Widget _buildBody(SearchProvider search) {
+    if (search.isLoadingBrands) {
+      return SkeletonShimmer(
+        child: ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: 12,
+          separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFEAEAEA)),
+          itemBuilder: (_, __) => ListTile(
+            leading: const SkeletonBox(height: 28, width: 28, borderRadius: 4),
+            title: const SkeletonBox(height: 14, width: double.infinity, borderRadius: 4),
+          ),
+        ),
+      );
+    }
+
+    if (search.error != null) {
+      return Center(child: Text(search.error!));
+    }
+
+    return ListView.separated(
+      itemCount: search.brands.length,
+      separatorBuilder: (_, __) =>
+          const Divider(height: 1, thickness: 0.8, color: Color(0xFFE8E8E8)),
+      itemBuilder: (context, index) {
+        final brand = search.brands[index];
+        final isSelected = search.selectedBrandIds.contains(brand.id);
+
+        return ListTile(
+          onTap: () {
+            search.toggleBrand(brand);
+          },
+          leading: CachedNetworkImage(
+            imageUrl: brand.imagePath,
+            width: 28,
+            height: 28,
+            fit: BoxFit.contain,
+            errorWidget: (_, __, ___) =>
+                const Icon(Icons.directions_car, size: 24),
+          ),
+          title: Text(
+            brand.name,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFF1B1B1B),
+              height: 1.4,
+            ),
+          ),
+          trailing: isSelected
+              ? const Icon(Icons.check, color: Colors.black)
+              : null,
+        );
+      },
+    );
+  }
+
+  Widget _bottomBar(SearchProvider search) {
+    final hasSelection = search.selectedBrandIds.isNotEmpty;
+
+    return Container(
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 24),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(color: Colors.black12, blurRadius: 8),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              onPressed: hasSelection ? search.clearBrands : null,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey.shade200,
+                foregroundColor: Colors.black54,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                minimumSize: const Size(0, 48),
+              ),
+              child: Text(AppLocalizations.of(context)!.clearFilter),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: ElevatedButton(
+              onPressed: hasSelection
+                  ? () {
+                      Navigator.pop(context);
+                    }
+                  : null,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: hasSelection
+                    ? const Color.fromARGB(255, 0, 102, 238)
+                    : Colors.grey.shade300,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                minimumSize: const Size(0, 48),
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.update,
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "906020040562",
+    "project_id": "sayarti-fc873",
+    "storage_bucket": "sayarti-fc873.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906020040562:android:ee50d7b3c4dccfc32137eb",
+        "android_client_info": {
+          "package_name": "com.example.sayarti"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfvgaktHLBOw0VA2od0kXvRr6kopAeh2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

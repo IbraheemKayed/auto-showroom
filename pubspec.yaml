@@ -1,0 +1,130 @@
+name: sayarti
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.7
+  provider: ^6.1.5+1
+  google_fonts: ^6.3.2
+  firebase_core: ^4.2.1
+  firebase_messaging: ^16.0.4
+  dio: ^5.9.0
+  shared_preferences: ^2.5.3
+  svg_flutter: ^0.0.1
+  flutter_svg: ^2.2.3
+  url_launcher: ^6.3.2
+  image_picker: ^1.2.1
+  intl: ^0.20.2
+  cached_network_image: ^3.4.1
+  photo_view: ^0.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: 0.14.4
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/sayarti_logo.png"
+  adaptive_icon_background: "#0066EE"
+  adaptive_icon_foreground: "assets/images/sayarti_logo.png"
+
+flutter_native_splash:
+  color: "#0066EE"
+  image: assets/images/sayarti_logo.png
+  android: true
+  ios: true
+  # fade-in effect
+  web: false
+
+flutter:
+  generate: true
+  fonts:
+    - family: NotoSansArabic
+      fonts:
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Light.ttf
+          weight: 300
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/NotoSansArabic/NotoSansArabic-ExtraBold.ttf
+          weight: 800
+    - family: FunnelDisplay
+      fonts:
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-Light.ttf
+          weight: 300
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/FunnelDisplay/FunnelDisplay-ExtraBold.ttf
+          weight: 800
+  uses-material-design: true
+  assets:
+    - assets/images/sayarti_logo.png
+    - assets/images/car.png
+    - assets/images/b.svg
+    - assets/images/car.jpg
+    - assets/images/calendar.svg
+    - assets/images/drivetrain.svg
+    - assets/images/engine.svg
+    - assets/images/fuel.svg
+    - assets/images/mileage.svg
+    - assets/images/owners.svg
+    - assets/images/power.svg
+    - assets/images/transmission.svg
+    - assets/images/map.png
+    - assets/images/chat.svg
+    - assets/images/check.svg
+    - assets/images/us.png
+    - assets/images/ps.png
+    - assets/images/home_car.png
+    - assets/images/home_car_ar.png
+    - assets/images/home.svg
+    - assets/images/saved.svg
+    - assets/images/search.svg
+    - assets/images/profile.svg
+    - assets/images/active_home.svg
+    - assets/images/active_saved.svg
+    - assets/images/active_search.svg
+    - assets/images/active_profile.svg
+    - assets/images/posts.svg
+    - assets/images/step1_car.png
+    - assets/images/step2_car.png
+    - assets/images/car2.png
+    - assets/images/car3.png
+    - assets/images/listed.svg
+    - assets/images/awaiting_approval.svg
+    - assets/images/step3_car.png
+    - assets/images/hand.png
+    - assets/images/heart.svg
+    - assets/images/heart_on.svg
+    - assets/images/notifications.png
+    - assets/images/good_deal.svg
+    - assets/images/great_deal.svg
+    - assets/images/overpriced.svg
+    - assets/images/fair_deal.svg
+    - assets/images/no_rating.svg
+    - assets/images/icon.svg
+    

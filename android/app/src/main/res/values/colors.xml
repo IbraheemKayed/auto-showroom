@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- اللون الأزرق للسلاش -->
+    <color name="splash_color">#0066EE</color>
+	<color name="ic_launcher_background">#0066EE</color>
+</resources>
